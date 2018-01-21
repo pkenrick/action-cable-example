@@ -1,0 +1,30 @@
+<p>New Chatroom:</p>
+
+<p>
+  <%= form_for Chatroom.new, url: chatrooms_path, method: 'post' do |f| %>
+    Topic: <%= f.text_field :topic %>
+    <%= f.submit 'Add chatroom' %>
+  <% end %>
+</p>
+<p><%= render partial: 'layouts/flash_errors'%></p>
+
+
+<br>
+<br>
+
+<p>Chatrooms:</p>
+
+<p>
+  <% if @chatrooms.any? %>
+    <ul>
+      <% @chatrooms.each do |chatroom| %>
+        <li>
+          <%= link_to chatroom.topic, chatroom_path(chatroom.slug) %>
+          (<%= link_to 'edit', edit_chatroom_path(chatroom) %>)
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No chatrooms</p>
+  <% end %>
+</p>

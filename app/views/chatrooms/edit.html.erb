@@ -1,0 +1,11 @@
+<p>Edit Chatroom: <%= @chatroom.topic %></p>
+
+<p>
+  <%= form_for @chatroom do |f| %>
+    New topic: <%= f.text_field :topic %>
+    <%= f.submit 'Update' %>
+  <% end %>
+</p>
+<p><%= render partial: 'layouts/flash_errors'%></p>
+
+<p><%= link_to 'Back to Chatrooms', chatrooms_path %></p>

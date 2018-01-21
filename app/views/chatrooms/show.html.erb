@@ -1,0 +1,24 @@
+<p>Chatroom: <%= @chatroom.topic %></p>
+
+<p>Add Message:</p>
+<%= form_for @message do |f| %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+  <%= f.submit 'Add', data: { disable_with: false} %>
+<% end %>
+<p><%= render partial: 'layouts/flash_errors'%></p>
+
+<p>Messages:</p>
+<ul>
+  <span id="messages">
+    <% if @chatroom.messages.any? %>
+      <% @chatroom.messages.order('created_at').reverse.each do |message| %>
+        <li><%= "#{message.user.username.upcase} says: #{message.content}" %></li>
+      <% end %>
+    <% else %>
+      <p>No messages yet</p>
+    <% end %>
+  </span>
+</ul>
+
+<p><%= link_to 'Back to Chatrooms', chatrooms_path %></p>

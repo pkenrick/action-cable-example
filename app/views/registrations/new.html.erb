@@ -1,0 +1,8 @@
+<div style='text-align: center'>
+  <p class='alert alert-danger'>Please enter a username below:</p>
+  <%= form_for User.new, url: signup_path do |f| %>
+    <%= f.text_field :username %>
+    <%= f.submit %>
+  <% end %>
+  <p><%= render partial: 'layouts/flash_errors'%></p>
+</div>

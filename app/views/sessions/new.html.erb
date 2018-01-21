@@ -1,0 +1,8 @@
+<div style='text-align: center'>
+  <p>Please enter your username:</p>
+  <%= form_for User.new, url: login_path do |f| %>
+    <%= f.text_field :username %>
+    <%= f.submit 'Log In'%>
+  <% end %>
+  <p><%= render partial: 'layouts/flash_errors'%></p>
+</div>
